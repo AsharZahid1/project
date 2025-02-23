@@ -2,28 +2,33 @@ import Image from "next/image";
 import heroImage from "../assets/heroimage.jpg";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react"; 
+import { Mail } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="md:max-w-2xl sm:max-w-xl max-w-sm">
-      <h1 className="p-8 text-3xl sm:p-10 sm:text-5xl font-bold text-gray-900">
-        Al-Aziz
-      </h1>
-      <h1 className="p-8 text-3xl sm:p-10 sm:text-5xl font-bold text-gray-900">
-        Leaders School & College of Modern Sciences
-      </h1>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center text-center -mt-32">
+        <h1 className="pb-2 text-4xl sm:text-7xl font-black tracking-tight">
+          <span className="text-gray-900">Al-Aziz</span>{" "}
+          <span className="text-white">Leaders</span>
+        </h1>
+        <h2 className="text-3xl sm:text-6xl font-extrabold text-white tracking-tight leading-[1.15] font-display -mt-2">
+          School & College of
+        </h2>
+        <h2 className="text-2xl sm:text-4xl font-black tracking-tight leading-[1.15] font-display text-gray-900 animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-gray-900">
+          Modern Sciences
+        </h2>
+      </div>
 
-
-      <Button className="sm:mx-16 mx-10 flex items-center">
+      <Button className="flex items-center mt-16 bg-transparent border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transform transition-all duration-300 hover:scale-105 rounded-full font-bold">
         <Mail className="mr-2 h-4 w-4" />
-        <Link href="/signup">Sign in with email</Link>
+        <Link href="/signup">Apply Now</Link>
       </Button>
 
       <Image
-        src={heroImage} 
+        src={heroImage}
         alt="blogs"
-        className="w-screen h-screen object-cover object-top opacity-80 absolute top-0 -z-10"
+        className="w-screen h-screen object-cover object-top opacity-80 absolute top-0 -z-10 brightness-50 animate-breathe"
       />
     </div>
   );
