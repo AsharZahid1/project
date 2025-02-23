@@ -2,12 +2,20 @@
 import Image from "next/image";
 import Hero from "@/components/hero";
 
+import {App} from "@/components/card"
+import {Montserrat} from "next/font/google"
+const mont = Montserrat({
+weight:"700",
+subsets:["latin"],
+style:"normal"
+});
+ 
 export default function Home() {
   return (
     <>
      <Hero/>
 
-     <section className="min-h-screen mt-[40vh]">
+     <section className="min-h-screen">
       <div className="flex justify-center items-center min-h-screen">
        <video
         autoPlay
@@ -21,8 +29,14 @@ export default function Home() {
          </div>
       </section>
       
-     <section className="min-h-screen">
-      <div>hello</div>
+     <section className=" flex justify-center shadow-lg  h-auto bg-gray-800" >
+      <div className="bg-white w-auto rounded-sm mt-4">
+        <h1 className={`${mont.className} text-center mt-3 font-bold text-3xl`}>Office Bearers</h1>
+            <App/>
+      
+       
+          
+         </div>
 
      </section>
    </>
