@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import heroImage from "../assets/heroimage.jpg";
 import Link from "next/link";
@@ -31,5 +32,6 @@ export default function Hero() {
         className="w-screen h-screen object-cover object-top opacity-80 absolute top-0 -z-10 brightness-50 animate-breathe"
       />
     </div>
+
   );
 }
