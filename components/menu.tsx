@@ -20,67 +20,58 @@ const components: { title: string; href: string; description: string }[] = [
     title: "Main Campus",
     href: "./",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "",
   },
   {
     title: "Suffah Campus",
     href: "./",
-    description:
-      "For sighted users to preview content available behind a link.",
+    description: "",
   },
   {
     title: "Iqbal Campus",
     href: "./",
-    description:
-      "For sighted users to preview content available behind a link.",
+    description: "",
   },
   {
     title: "Ghazali Senior Campus",
     href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    description: "",
   },
   {
     title: "Ghazali Junior Campus",
     href: "./",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    description: "",
   },
   {
     title: "Razi Campus",
     href: "./",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    description: "",
   },
   {
     title: "Jinnah Campus",
     href: "./",
-    description: "Visually or semantically separates content.",
+    description: "",
   },
   {
     title: "Fatima Jinnah Campus",
     href: "./",
-    description: "Visually or semantically separates content.",
+    description: "",
   },
   {
     title: "Shahpur Campus",
     href: "./",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    description: "",
   },
   {
     title: "Rumi Campus",
     href: "./",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    description: "",
   },
   {
     title: "Sir Syed Campus",
     href: "./",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    description: "",
   },
- 
 ]
 
 export default function Menu() {

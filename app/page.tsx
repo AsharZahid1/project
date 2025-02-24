@@ -4,6 +4,10 @@ import Hero from "@/components/hero";
 
 import {App} from "@/components/card"
 import {Montserrat} from "next/font/google"
+import CountBox from "@/components/count-box"
+import SuccessStories from "@/components/success-stories"
+import TestimonialSection from "@/components/testimonial-section"
+
 const mont = Montserrat({
 weight:"700",
 subsets:["latin"],
@@ -16,7 +20,7 @@ export default function Home() {
      <Hero/>
 
      <section className="min-h-screen">
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen bg-black">
        <video
         autoPlay
         muted
@@ -39,6 +43,9 @@ export default function Home() {
          </div>
 
      </section>
+     <CountBox />
+     <TestimonialSection />
+     <SuccessStories />
    </>
   );
 }

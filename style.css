@@ -1,0 +1,27 @@
+.video-section {
+    background-color: #000000; /* Set black background */
+} 
+
+.hero-section {
+    background-image: url('your-hero-image.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Add gradient overlay to bottom of hero section */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Adjust height as needed */
+    background: linear-gradient(to bottom, transparent, #000000);
+} 
+
+.hero-section,
+.video-section {
+    margin: 0;
+    padding: 0;
+} 

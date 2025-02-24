@@ -7,7 +7,7 @@ import { Mail } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-lvh">
       <div className="flex flex-col items-center text-center -mt-32">
         <h1 className="pb-2 text-4xl sm:text-7xl font-black tracking-tight">
           <span className="text-gray-900">Al-Aziz</span>{" "}
