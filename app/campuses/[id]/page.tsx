@@ -98,19 +98,31 @@ export default function CampusPage({ params }: { params: Promise<{ id: string }>
             className="mt-16"
           >
             <h2 className="text-2xl font-semibold mb-8">Campus Gallery</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               {campus.images.slice(1).map((image, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05 }}
-                  className="relative h-64 rounded-lg overflow-hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: index * 0.1,
+                    hover: { duration: 0.2 }
+                  }}
+                  className="relative h-64 rounded-lg overflow-hidden group"
                 >
                   <Image
                     src={image}
                     alt={`${campus.name} image ${index + 2}`}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <p className="text-white text-lg font-semibold">
+                      {image.split('/').pop()?.split('.')[0].replace(/-/g, ' ')}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>

@@ -7,7 +7,13 @@ export const campuses: Campus[] = [
     headName: "Ms. Najma",
     contact: "+92 302 5418942",
     address: "Museum Road, Taxila Cantt",
-    images: ["/campuses/heroimage1.jpg", "/campuses/main-campus-2.jpg"],
+    images: [
+      "/campuses/heroimage1.jpg",
+      "/campuses/main/library.jpg",
+      "/campuses/main/lab.jpg",
+      "/campuses/main/playground.jpg",
+      "/campuses/main/classroom.jpg"
+    ],
     mapUrl: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3317.7515557881266!2d72.8209717757032!3d33.74123997327566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ0JzI4LjUiTiA3MsKwNDknMjQuOCJF!5e0!3m2!1sen!2s!4v1740433049327!5m2!1sen!2s" ,
     description: "Our flagship campus with state-of-the-art facilities including modern laboratories, library, and sports complex."
   },
@@ -17,7 +23,13 @@ export const campuses: Campus[] = [
     headName: "Ms. Zahra",
     contact: "+92 312 1517504",
     address: "45 Knowledge Road, Block B, Karachi",
-    images: ["/campuses/suffah-1.jpg", "/campuses/suffah-2.jpg"],
+    images: [
+      "/campuses/suffah/hero.jpg",
+      "/campuses/suffah/computer-lab.jpg",
+      "/campuses/suffah/auditorium.jpg",
+      "/campuses/suffah/sports.jpg",
+      "/campuses/suffah/cafeteria.jpg"
+    ],
     mapUrl: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3317.843859244303!2d72.81015537570312!3d33.73885347327653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ0JzE5LjkiTiA3MsKwNDgnNDUuOCJF!5e0!3m2!1sen!2s!4v1740431617436!5m2!1sen!2s",
     description: "A center of excellence combining Islamic and modern education."
   },
@@ -27,9 +39,15 @@ export const campuses: Campus[] = [
     headName: "Ms. Sarwat",
     contact: "+92 335 9075464",
     address: "Museum Road, Taxila Cantt",
-    images: ["/heroimage1.jpg", "/campuses/main-campus-2.jpg"],
-    mapUrl:"https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3317.7515557881266!2d72.8209717757032!3d33.74123997327566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ0JzI4LjUiTiA3MsKwNDknMjQuOCJF!5e0!3m2!1sen!2s!4v1740433049327!5m2!1sen!2s" ,
-    description: "Our flagship campus with state-of-the-art facilities including modern laboratories, library, and sports complex."
+    images: [
+      "/campuses/iqbal/hero.jpg",
+      "/campuses/iqbal/science-lab.jpg",
+      "/campuses/iqbal/library.jpg",
+      "/campuses/iqbal/playground.jpg",
+      "/campuses/iqbal/assembly.jpg"
+    ],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3317.7515557881266!2d72.8209717757032!3d33.74123997327566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ0JzI4LjUiTiA3MsKwNDknMjQuOCJF!5e0!3m2!1sen!2s!4v1740433049327!5m2!1sen!2s" ,
+    description: "Named after the great philosopher-poet, focusing on literature and sciences."
   },
   {
     id: "ghazali-senior-campus",
