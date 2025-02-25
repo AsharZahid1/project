@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from 'next/navigation'
 
 import { cn } from "@/lib/utils"
 // import { Icons } from "@/components/icons"
@@ -18,85 +19,95 @@ import {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Main Campus",
-    href: "./",
-    description:
-      "",
+    href: "/campuses/main-campus",
+    description: "Our flagship campus with state-of-the-art facilities",
   },
   {
     title: "Suffah Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/suffah-campus",
+    description: "Excellence in Islamic and modern education",
   },
   {
     title: "Iqbal Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/iqbal-campus",
+    description: "Named after the great philosopher-poet",
   },
   {
     title: "Ghazali Senior Campus",
-    href: "/docs/primitives/tabs",
-    description: "",
+    href: "/campuses/ghazali-senior-campus",
+    description: "Advanced facilities for higher education",
   },
   {
     title: "Ghazali Junior Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/ghazali-junior-campus",
+    description: "Nurturing young minds for the future",
   },
   {
     title: "Razi Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/razi-campus",
+    description: "Focus on scientific excellence",
   },
   {
     title: "Jinnah Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/jinnah-campus",
+    description: "Named after the founder of Pakistan",
   },
   {
     title: "Fatima Jinnah Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/fatima-jinnah-campus",
+    description: "Dedicated to women's education",
   },
   {
     title: "Shahpur Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/shahpur-campus",
+    description: "Serving the Shahpur community",
   },
   {
     title: "Rumi Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/rumi-campus",
+    description: "Inspiring creativity and wisdom",
   },
   {
     title: "Sir Syed Campus",
-    href: "./",
-    description: "",
+    href: "/campuses/sir-syed-campus",
+    description: "Continuing the legacy of educational reform",
   },
 ]
 
 export default function Menu() {
+  const pathname = usePathname()
+  const isCampusPage = pathname?.includes('/campuses/')
+
+  const menuItemStyle = isCampusPage 
+    ? `${navigationMenuTriggerStyle()} !text-gray-900` 
+    : `${navigationMenuTriggerStyle()} text-white`
+
   return (
-    <NavigationMenu>
+    <NavigationMenu className={isCampusPage ? 'text-gray-900' : 'text-white'}>
       <NavigationMenuList>
-      <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+        <NavigationMenuItem>
+          <Link href="/" legacyBehavior passHref>
+            <NavigationMenuLink className={menuItemStyle}>
               Home
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/academics" legacyBehavior passHref>
+            <NavigationMenuLink className={menuItemStyle}>
               Academics
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
     
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Campuses</NavigationMenuTrigger>
+          <NavigationMenuTrigger 
+            className={isCampusPage ? '!text-gray-900' : 'text-white'}
+          >
+            Campuses
+          </NavigationMenuTrigger>
           <NavigationMenuContent className="bg-white p-4 rounded-lg shadow-lg">
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
                 <ListItem
                   key={component.title}
@@ -110,22 +121,22 @@ export default function Menu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/admission" legacyBehavior passHref>
+            <NavigationMenuLink className={menuItemStyle}>
               Admission
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/about" legacyBehavior passHref>
+            <NavigationMenuLink className={menuItemStyle}>
               About Us
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <Link href="/contacts" legacyBehavior passHref>
+            <NavigationMenuLink className={menuItemStyle}>
               Contacts
             </NavigationMenuLink>
           </Link>
