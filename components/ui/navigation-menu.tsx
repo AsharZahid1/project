@@ -38,10 +38,22 @@ const NavigationMenuList = React.forwardRef<
 ));
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item;
+const NavigationMenuItem = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Item>
+>(({ className, ...props }, ref) => (
+  <NavigationMenuPrimitive.Item
+    ref={ref}
+    className={cn(
+      "block text-sm transition-colors hover:text-gray-900",
+      className
+    )}
+    {...props}
+  />
+));
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md px-5 py-2 text-sm font-bold text-white transition-all duration-500 ease-in-out hover:scale-110 hover:text-blue-900 focus:text-blue-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:text-blue-900/50 data-[state=open]:text-blue-900/50 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-900 after:transition-all after:duration-500 hover:after:w-full"
+  "group inline-flex h-10 w-max items-center justify-center rounded-md px-5 py-2 text-sm font-bold text-white transition-all duration-500 ease-in-out hover:scale-110 hover:text-gray-900 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:text-gray-900/50 data-[state=open]:text-gray-900/50 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-gray-900 after:transition-all after:duration-500 hover:after:w-full"
 );
 
 const NavigationMenuTrigger = React.forwardRef<

@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 // import { Icons } from "@/components/icons"
@@ -82,65 +83,89 @@ export default function Menu() {
     ? `${navigationMenuTriggerStyle()} !text-gray-900` 
     : `${navigationMenuTriggerStyle()} text-white`
 
+  const menuItems = [
+    { name: "Home", href: "/" },
+    { name: "Academics", href: "/academics" },
+    { name: "Admission", href: "/admission" },
+    { name: "About Us", href: "/about" },
+    { name: "Contacts", href: "/contacts" }
+  ];
+
   return (
     <NavigationMenu className={isCampusPage ? 'text-gray-900' : 'text-white'}>
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={menuItemStyle}>
-              Home
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/academics" legacyBehavior passHref>
-            <NavigationMenuLink className={menuItemStyle}>
-              Academics
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-    
-        <NavigationMenuItem>
-          <NavigationMenuTrigger 
-            className={isCampusPage ? '!text-gray-900' : 'text-white'}
+        {menuItems.slice(0, 2).map((item, index) => (
+          <motion.div
+            key={item.name}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.1 * index,
+              ease: "easeOut"
+            }}
           >
-            Campuses
-          </NavigationMenuTrigger>
-          <NavigationMenuContent className="bg-white p-4 rounded-lg shadow-lg">
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/admission" legacyBehavior passHref>
-            <NavigationMenuLink className={menuItemStyle}>
-              Admission
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/about" legacyBehavior passHref>
-            <NavigationMenuLink className={menuItemStyle}>
-              About Us
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/contacts" legacyBehavior passHref>
-            <NavigationMenuLink className={menuItemStyle}>
-              Contacts
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href={item.href} legacyBehavior passHref>
+                <NavigationMenuLink className={menuItemStyle}>
+                  {item.name}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </motion.div>
+        ))}
+
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.5,
+            delay: 0.2,
+            ease: "easeOut"
+          }}
+        >
+          <NavigationMenuItem>
+            <NavigationMenuTrigger 
+              className={isCampusPage ? '!text-gray-900' : 'text-white'}
+            >
+              Campuses
+            </NavigationMenuTrigger>
+            <NavigationMenuContent className="bg-white p-4 rounded-lg shadow-lg">
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                {components.map((component) => (
+                  <ListItem
+                    key={component.title}
+                    title={component.title}
+                    href={component.href}
+                  >
+                    {component.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </motion.div>
+
+        {menuItems.slice(2).map((item, index) => (
+          <motion.div
+            key={item.name}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.3 + (0.1 * index),
+              ease: "easeOut"
+            }}
+          >
+            <NavigationMenuItem>
+              <Link href={item.href} legacyBehavior passHref>
+                <NavigationMenuLink className={menuItemStyle}>
+                  {item.name}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </motion.div>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   )

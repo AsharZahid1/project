@@ -1,7 +1,8 @@
-import * as React from "react"
-import Image from "next/image"
+import * as React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,68 +10,91 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import image from "@/assets/zahidaziz.jpg"
+} from "@/components/ui/card";
+import image from "@/assets/zahidaziz.jpg";
 interface CardProps {
-    image: string;
-    name: string;
-    designation: string;
-    qualification: string;
-    role: string;
-  }
+  image: string;
+  name: string;
+  designation: string;
+  qualification: string;
+  role: string;
+}
 
-  const cardData: CardProps[] = [
-    {
-      image: "/zahidaziz.jpg",
-      name: "Prof. Abdul Aziz Haqqani",
-      designation: "Chief Executive",
-      qualification: "M.A., B.Ed.",
-      role: "Rtd. Principal",
-    },
-    {
-      image: "/atifaziz1.jpg",
-      name: "Zahid Aziz Haqqani",
-      designation: "Principal",
-      qualification: "M. Phil Edu. MA Islamiat",
-      role: "MA Arabic",
-    },
-    {
-      image: "/zahidaziz.jpg",
-      name: "Atif Aziz Haqqani",
-      designation: "V.Principal",
-      qualification: "MA English, MA Political Science",
-      role: "B.E.D",
-    },
-    {
-      image: "/atifaziz1.jpg",
-      name: "Rahid Aziz Haqqani",
-      designation: "Team Lead",
-      qualification: "B.Tech, M.Tech",
-      role: "Rtd. Engineer",
-    },
-  ];
+const cardData: CardProps[] = [
+  {
+    image: "/zahidaziz.jpg",
+    name: "Prof. Abdul Aziz Haqqani",
+    designation: "Chief Executive",
+    qualification: "M.A., B.Ed.",
+    role: "Rtd. Principal",
+  },
+  {
+    image: "/atifaziz1.jpg",
+    name: "Zahid Aziz Haqqani",
+    designation: "Principal",
+    qualification: "M. Phil Edu. MA Islamiat",
+    role: "MA Arabic",
+  },
+  {
+    image: "/zahidaziz.jpg",
+    name: "Atif Aziz Haqqani",
+    designation: "V.Principal",
+    qualification: "MA English, MA Political Science",
+    role: "B.E.D",
+  },
+  {
+    image: "/atifaziz1.jpg",
+    name: "Rahid Aziz Haqqani",
+    designation: "Team Lead",
+    qualification: "B.Tech, M.Tech",
+    role: "Rtd. Engineer",
+  },
+];
 
-  export default function CardWithForm({ image, name, designation, qualification, role }: CardProps) {
-    return (
-      <Card className="w-[350px]">
+export default function CardWithForm({
+  image,
+  name,
+  designation,
+  qualification,
+  role,
+}: CardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
+      <Card className="w-full sm:w-[280px] transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-[2px_4px_12px_0px_rgba(0,_0,_0,_0.5)]">
         <CardHeader>
           <CardTitle>
-            <Image src={image} alt={name} width={300} height={200} className="rounded-lg" />
+            <div className="overflow-hidden rounded-lg">
+              <Image
+                src={image}
+                alt={name}
+                width={260}
+                height={180}
+                className="rounded-lg object-cover h-[180px] transition-transform duration-500 ease-in-out hover:scale-110"
+              />
+            </div>
           </CardTitle>
         </CardHeader>
-        
-        <CardFooter className="flex flex-col space-y-2">
-          <h1 className="text-lg font-semibold">{name}</h1>
+
+        <CardFooter className="flex flex-col space-y-1 py-3">
+          <h1 className="text-base font-semibold">{name}</h1>
           <p className="text-sm text-gray-600">{designation}</p>
           <p className="text-sm text-gray-600">{qualification}</p>
           <p className="text-sm text-gray-600">{role}</p>
         </CardFooter>
       </Card>
-    );
-  }
-  export function App() {
-    return (
-      <div className="flex flex-wrap justify-center items-center gap-x-4 mt-7">
+    </motion.div>
+  );
+}
+
+export function App() {
+  return (
+    <div className="w-full px-4 py-8 sm:py-16">
+      <div className="flex flex-col sm:flex-row justify-center gap-6 flex-wrap sm:flex-nowrap">
         {cardData.map((card, index) => (
           <CardWithForm
             key={index}
@@ -82,7 +106,6 @@ interface CardProps {
           />
         ))}
       </div>
-    );
-  }
-
-
+    </div>
+  );
+}
