@@ -10,6 +10,7 @@ import SuccessStories from "@/components/success-stories";
 import TestimonialSection from "@/components/testimonial-section";
 import Positions from "@/components/positions";
 import Campus from "@/components/campus";
+import Vision from "@/components/vision";
 
 const mont = Montserrat({
   weight: "700",
@@ -85,6 +86,7 @@ export default function Home() {
       <CountBox />
       <TestimonialSection />
       <SuccessStories />
+      <Vision />
       <Positions />
       <Campus />
     </>
