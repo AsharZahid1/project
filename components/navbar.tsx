@@ -18,11 +18,16 @@ export default function navbar() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <Image
-          className="pl-2 sm:pl-3 h-[80px] w-[80px] sm:h-[150px] sm:w-[150px]"
+          className="pl-2 sm:pl-3 
+            h-[40px] w-[80px]                    // mobile size
+            sm:h-[60px] sm:w-[100px]             // small screens (640px+)
+            md:h-[80px] md:w-[120px]             // medium screens (768px+)
+            lg:h-[100px] lg:w-[140px]            // large screens (1024px+)
+            xl:h-[120px] xl:w-[160px]            // extra large screens (1280px+)
+            object-contain"
           src={Logo}
           alt="logo"
-          height={150}
-          width={150}
+          priority
         />
       </motion.div>
       <motion.div
@@ -31,7 +36,7 @@ export default function navbar() {
         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         className="flex-1 flex justify-center"
       >
-        <div className="hidden md:flex justify-center gap-x-3">
+        <div className="hidden md:flex justify-center gap-x-1">
           <Menu />
         </div>
       </motion.div>

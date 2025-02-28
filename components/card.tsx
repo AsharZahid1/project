@@ -65,7 +65,7 @@ export default function CardWithForm({
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <Card className="w-full sm:w-[280px] transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-[2px_4px_12px_0px_rgba(0,_0,_0,_0.5)]">
+      <Card className="w-full transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-[2px_4px_12px_0px_rgba(0,_0,_0,_0.5)]">
         <CardHeader>
           <CardTitle>
             <div className="overflow-hidden rounded-lg">
@@ -74,7 +74,7 @@ export default function CardWithForm({
                 alt={name}
                 width={260}
                 height={180}
-                className="rounded-lg object-cover h-[180px] transition-transform duration-500 ease-in-out hover:scale-110"
+                className="w-full h-[180px] rounded-lg object-cover transition-transform duration-500 ease-in-out hover:scale-110"
               />
             </div>
           </CardTitle>
@@ -94,7 +94,7 @@ export default function CardWithForm({
 export function App() {
   return (
     <div className="w-full px-4 py-8 sm:py-16">
-      <div className="flex flex-col sm:flex-row justify-center gap-6 flex-wrap sm:flex-nowrap">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {cardData.map((card, index) => (
           <CardWithForm
             key={index}

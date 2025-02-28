@@ -1,7 +1,10 @@
-'use client';
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+"use client";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/heroimage.jpg";
+import zahidAziz from "@/assets/zahidaziz.jpg";
 
 const successStories = [
   {
@@ -39,93 +42,92 @@ const SuccessStories = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + successStories.length) % successStories.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + successStories.length) % successStories.length
+    );
   };
 
   return (
-    <div className="bg-[#f5f5f5] py-16">
-      <div className="container mx-auto px-4">
-        {/* Section Title */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#003366] mb-4">Success Stories</h2>
-          <div className="w-24 h-1 bg-[#003366] mx-auto mb-6"></div>
-        </div>
+    <div className="relative bg-white py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Content Column */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-2 md:order-1"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#003366] mb-6 font-['Roboto_Condensed']">
+              Our Success Story
+            </h2>
+            <div className="prose prose-lg mb-8">
+              <p className="text-base sm:text-lg leading-relaxed text-[#666666] font-['Open_Sans']">
+                Al-Aziz Education System, established 30 years ago under the
+                patronage of retired principal Abdul Aziz Haqqani, is now the
+                largest educational network in Tehsil Taxila, with 10 campuses,
+                a Board of Directors, and over 250 qualified staff members. The
+                institution boasts modern, purpose-built campuses, including a
+                three-story building near Taxila Museum and a state-of-the-art
+                facility with 30 rooms.
+              </p>
+              <p className="text-base sm:text-lg leading-relaxed mt-4 text-[#666666] font-['Open_Sans']">
+                Recognized by the Federal Board Islamabad, Al-Aziz School
+                consistently achieves excellent matriculation results and has
+                become an official examination center. Upgraded to an
+                intermediate college in 2018, it has acquired land near Taxila
+                Cantt for a future model campus.
+              </p>
+              <p className="text-base sm:text-lg leading-relaxed mt-4 text-[#666666] font-['Open_Sans']">
+                The school prioritizes religious and moral education through its
+                "Zad-e-Momin" course and adopts modern teaching methodologies by
+                discouraging rote learning and implementing Cambridge-based
+                curricula from Kantab Publishers and Oxford.
+              </p>
+            </div>
+            <Button className="bg-[#003366] text-white hover:bg-[#002244] transition-all duration-300 px-8 py-3 rounded-full text-sm font-semibold font-['Open_Sans']">
+              Read More
+            </Button>
+          </motion.div>
 
-        {/* Success Stories Slider */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Buttons */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-4 rounded-full shadow-lg hover:bg-gray-100 -ml-6"
+          {/* Images Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-1 md:order-2 relative h-[300px] sm:h-[400px] md:h-[500px]"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#003366]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button 
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-4 rounded-full shadow-lg hover:bg-gray-100 -mr-6"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#003366]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
-          {/* Success Story Content */}
-          <motion.div 
-            key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="bg-white rounded-lg shadow-xl overflow-hidden"
-          >
-            <div className="flex flex-col md:flex-row">
-              {/* Image Section */}
-              <div className="md:w-1/2 relative h-[400px]">
+            {/* Background Image */}
+            <div className="absolute left-0 w-[65%] h-full">
+              <div className="relative h-full rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src={successStories[currentSlide].image}
-                  alt={successStories[currentSlide].name}
+                  src={heroImage}
+                  alt="Campus"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Foreground Image */}
+            <div className="absolute right-0 bottom-12 w-[65%] h-[80%]">
+              <div className="relative h-full rounded-lg overflow-hidden shadow-xl border-8 border-white">
+                <Image
+                  src={zahidAziz}
+                  alt="Prof. Abdul Aziz Haqqani"
                   fill
                   className="object-cover"
                 />
               </div>
-
-              {/* Content Section */}
-              <div className="md:w-1/2 p-8 flex flex-col justify-center bg-white">
-                <div className="border-l-4 border-[#003366] pl-6">
-                  <h3 className="text-3xl font-bold text-[#003366] mb-4">
-                    {successStories[currentSlide].name}
-                  </h3>
-                  <p className="text-xl text-gray-600 mb-4">
-                    {successStories[currentSlide].achievement}
-                  </p>
-                  <p className="text-2xl font-semibold text-[#003366] mb-2">
-                    Marks: {successStories[currentSlide].marks}
-                  </p>
-                  <p className="text-lg text-gray-500">
-                    Year: {successStories[currentSlide].year}
-                  </p>
-                </div>
-              </div>
             </div>
           </motion.div>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center mt-8 gap-2">
-            {successStories.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? 'bg-[#003366] w-6' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default SuccessStories; 
+export default SuccessStories;
