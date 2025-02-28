@@ -62,33 +62,47 @@ const SuccessStories = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#003366] mb-6 font-['Roboto_Condensed']">
               Our Success Story
             </h2>
-            <div className="prose prose-lg mb-8">
-              <p className="text-base sm:text-lg leading-relaxed text-[#666666] font-['Open_Sans']">
-                Al-Aziz Education System, established 30 years ago under the
-                patronage of retired principal Abdul Aziz Haqqani, is now the
-                largest educational network in Tehsil Taxila, with 10 campuses,
-                a Board of Directors, and over 250 qualified staff members. The
-                institution boasts modern, purpose-built campuses, including a
-                three-story building near Taxila Museum and a state-of-the-art
-                facility with 30 rooms.
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed mt-4 text-[#666666] font-['Open_Sans']">
-                Recognized by the Federal Board Islamabad, Al-Aziz School
-                consistently achieves excellent matriculation results and has
-                become an official examination center. Upgraded to an
-                intermediate college in 2018, it has acquired land near Taxila
-                Cantt for a future model campus.
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed mt-4 text-[#666666] font-['Open_Sans']">
-                The school prioritizes religious and moral education through its
-                "Zad-e-Momin" course and adopts modern teaching methodologies by
-                discouraging rote learning and implementing Cambridge-based
-                curricula from Kantab Publishers and Oxford.
-              </p>
+            <div className="prose prose-lg mb-8 relative flex">
+              {/* Animated Vertical Line */}
+              <motion.div
+                initial={{ height: 0 }}
+                whileInView={{ height: "100%" }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="w-[3px] bg-[#003366] absolute left-0 top-0"
+                viewport={{ once: true }}
+              />
+
+              {/* Content with left padding for line */}
+              <div className="pl-8">
+                <p className="text-base sm:text-lg leading-relaxed text-[#666666] font-['Open_Sans']">
+                  Al-Aziz Education System, established 30 years ago under the
+                  patronage of retired principal Abdul Aziz Haqqani, is now the
+                  largest educational network in Tehsil Taxila, with 10
+                  campuses, a Board of Directors, and over 250 qualified staff
+                  members. The institution boasts modern, purpose-built
+                  campuses, including a three-story building near Taxila Museum
+                  and a state-of-the-art facility with 30 rooms.
+                </p>
+                <p className="text-base sm:text-lg leading-relaxed mt-4 text-[#666666] font-['Open_Sans']">
+                  Recognized by the Federal Board Islamabad, Al-Aziz School
+                  consistently achieves excellent matriculation results and has
+                  become an official examination center. Upgraded to an
+                  intermediate college in 2018, it has acquired land near Taxila
+                  Cantt for a future model campus.
+                </p>
+                <p className="text-base sm:text-lg leading-relaxed mt-4 text-[#666666] font-['Open_Sans']">
+                  The school prioritizes religious and moral education through
+                  its "Zad-e-Momin" course and adopts modern teaching
+                  methodologies by discouraging rote learning and implementing
+                  Cambridge-based curricula from Kantab Publishers and Oxford.
+                </p>
+              </div>
             </div>
-            <Button className="bg-[#003366] text-white hover:bg-[#002244] transition-all duration-300 px-8 py-3 rounded-full text-sm font-semibold font-['Open_Sans']">
-              Read More
-            </Button>
+            <div className="pl-8">
+              <Button className="bg-[#003366] text-white hover:bg-[#002244] transition-all duration-300 px-8 py-3 rounded-full text-sm font-semibold font-['Open_Sans']">
+                Read More
+              </Button>
+            </div>
           </motion.div>
 
           {/* Images Column */}
@@ -101,7 +115,7 @@ const SuccessStories = () => {
           >
             {/* Background Image */}
             <div className="absolute left-0 w-[65%] h-full">
-              <div className="relative h-full rounded-lg overflow-hidden shadow-xl">
+              <div className="relative h-full rounded-[20%] overflow-hidden shadow-xl">
                 <Image
                   src={heroImage}
                   alt="Campus"
@@ -113,8 +127,8 @@ const SuccessStories = () => {
             </div>
 
             {/* Foreground Image */}
-            <div className="absolute right-0 bottom-12 w-[65%] h-[80%]">
-              <div className="relative h-full rounded-lg overflow-hidden shadow-xl border-8 border-white">
+            <div className="absolute right-6 top-20 w-[65%] h-[100%] ">
+              <div className="relative h-full rounded-[20%] overflow-hidden shadow-xl border-8 border-white">
                 <Image
                   src={zahidAziz}
                   alt="Prof. Abdul Aziz Haqqani"

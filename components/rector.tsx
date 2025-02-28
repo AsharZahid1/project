@@ -1,8 +1,28 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Rector() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const paragraphs = [
+    "I take this opportunity to welcome you as a prospective admission seeker in our college. There is a great vision behind this edifice of excellence, which has attained this status in a short time by the grace of Allah Almighty.",
+    "Our College provides a balanced blend of academic, social, moral, and intellectual development to its students. We are providing quality education compared to the best institutions at an affordable cost. We aim at giving our nation good citizens, competent individuals, and Muslims of good faith.",
+    "Our college offers its students the best available facilities and an open, forward-looking mindset to enable the young to realize their potentials and grow into self-respecting and self-confident patriotic Pakistanis.",
+    "In the end, I assure you that my dedicated team is working with full devotion, sincerity, and utmost hard work to achieve a level of excellence. May Allah be with all of us.",
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % paragraphs.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + paragraphs.length) % paragraphs.length
+    );
+  };
+
   return (
     <div className="relative bg-white py-8 sm:py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -46,39 +66,51 @@ export default function Rector() {
                   <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white mb-4 sm:mb-6">
                     Message from Chief Executive
                   </h2>
-                  <div className="mt-4 space-y-3 sm:space-y-4 text-gray-300 text-sm sm:text-base">
-                    <p className="text-base leading-7">
-                      I take this opportunity to welcome you as a prospective
-                      admission seeker in our college. There is a great vision
-                      behind this edifice of excellence, which has attained this
-                      status in a short time by the grace of Allah Almighty.
-                    </p>
-                    <p className="text-base leading-7">
-                      Our College provides a balanced blend of academic, social,
-                      moral, and intellectual development to its students. We
-                      are providing quality education compared to the best
-                      institutions at an affordable cost. We aim at giving our
-                      nation good citizens, competent individuals, and Muslims
-                      of good faith.
-                    </p>
-                    <p className="text-base leading-7">
-                      Our college offers its students the best available
-                      facilities and an open, forward-looking mindset to enable
-                      the young to realize their potentials and grow into
-                      self-respecting and self-confident patriotic Pakistanis.
-                    </p>
-                    <p className="text-base leading-7">
-                      In the end, I assure you that my dedicated team is working
-                      with full devotion, sincerity, and utmost hard work to
-                      achieve a level of excellence. May Allah be with all of
-                      us.
-                    </p>
-                    <div className="mt-6">
-                      <p className="text-lg font-semibold text-white">
-                        Prof. Abdul Aziz Haqqani
-                      </p>
-                      <p className="text-base text-gray-300">Chief Executive</p>
+
+                  {/* Mobile Slider */}
+                  <div className="block sm:hidden">
+                    <div className="relative min-h-[200px]">
+                      <motion.p
+                        key={currentSlide}
+                        initial={{ opacity: 0, x: 100 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -100 }}
+                        className="text-base leading-7 text-gray-300"
+                      >
+                        {paragraphs[currentSlide]}
+                      </motion.p>
                     </div>
+
+                    {/* Navigation Dots */}
+                    <div className="flex justify-center gap-2 mt-6">
+                      {paragraphs.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentSlide(index)}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            currentSlide === index
+                              ? "bg-white w-4"
+                              : "bg-gray-500"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Desktop View */}
+                  <div className="hidden sm:block space-y-4 text-gray-300">
+                    {paragraphs.map((paragraph, index) => (
+                      <p key={index} className="text-base leading-7">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+
+                  <div className="mt-6">
+                    <p className="text-lg font-semibold text-white">
+                      Prof. Abdul Aziz Haqqani
+                    </p>
+                    <p className="text-base text-gray-300">Chief Executive</p>
                   </div>
                 </motion.div>
               </div>
