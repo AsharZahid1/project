@@ -1,30 +1,83 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { GraduationCap, BookOpen, ScrollText, Shield } from "lucide-react"
+import { GraduationCap, BookOpen, ScrollText, Shield, FileText, ClipboardCheck, School } from "lucide-react"
+import Image from "next/image"
+import { CircularDecoration } from "@/components/CircularDecoration"
 
 export default function AdmissionPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
-      {/* Hero Section */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="relative h-[40vh] flex items-center justify-center bg-[url('/admission-hero.jpg')] bg-cover bg-center"
-      >
-        <div className="absolute inset-0 bg-black/60" />
-        <motion.h1 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="relative text-5xl md:text-6xl font-bold text-center"
-        >
-          Leading The Way
-          <div className="text-lg md:text-xl mt-4 font-normal">
-            Shape Your Future with Al-Aziz Leaders
+      {/* Hero Banner */}
+      <div className="relative h-[35vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            // src="/admission/hero-banner.jpg"
+            src="/journey1.jpg"
+            alt="Admission Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#004b87]/90 to-[#004b87]/80" />
+          <CircularDecoration />
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+        </div>
+        
+        <div className="relative w-full max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between">
+            {/* Text Content */}
+            <motion.div 
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="max-w-2xl"
+            >
+              <motion.h1 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl md:text-7xl font-bold mb-6 text-white"
+              >
+                Admissions
+              </motion.h1>
+              <motion.p 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl md:text-2xl text-white/90"
+              >
+                Begin Your Journey to Excellence
+              </motion.p>
+            </motion.div>
+
+            {/* Icons */}
+            <motion.div 
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="hidden md:grid grid-cols-2 gap-4"
+            >
+              {[
+                { icon: FileText, delay: 0.2 },
+                { icon: ClipboardCheck, delay: 0.3 },
+                { icon: GraduationCap, delay: 0.4 },
+                { icon: School, delay: 0.5 },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: item.delay }}
+                  className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-white/20 transition-colors"
+                >
+                  <item.icon className="w-8 h-8 text-white" />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </motion.h1>
-      </motion.div>
+        </div>
+      </div>
 
       {/* Courses Section */}
       <section className="py-16 px-4">

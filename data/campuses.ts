@@ -9,10 +9,10 @@ export const campuses: Campus[] = [
     address: "Museum Road, Taxila Cantt",
     images: [
       "/campuses/heroimage1.jpg",
-      "/campuses/main/library.jpg",
-      "/campuses/main/lab.jpg",
-      "/campuses/main/playground.jpg",
-      "/campuses/main/classroom.jpg"
+      "/events/DSC_0099a.jpg",
+      "/events/DSC_0131a.jpg",
+      "/events/DSC_0018a.jpg",
+      "/events/DSC_0085a.jpg"
     ],
     mapUrl: "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3317.7515557881266!2d72.8209717757032!3d33.74123997327566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ0JzI4LjUiTiA3MsKwNDknMjQuOCJF!5e0!3m2!1sen!2s!4v1740433049327!5m2!1sen!2s" ,
     description: "Our flagship campus with state-of-the-art facilities including modern laboratories, library, and sports complex."

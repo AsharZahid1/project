@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Calendar, Award, BookOpen, Library, Building } from "lucide-react"
+import { Calendar, Award, BookOpen, Library, Building, GraduationCap, Trophy, Calculator, Circle } from "lucide-react"
+import { CircularDecoration } from "@/components/CircularDecoration"
 
 // Sample data - In a real app, this would come from a database
 const events = [
@@ -12,6 +13,13 @@ const events = [
     date: "March 15, 2024",
     description: "Join us for an exciting day of sports and athletics competitions.",
   image: "/events/DSC_0099a.jpg"
+  },
+  {
+    id: "2",
+    title: "Annual result Day 2024",
+    date: "jan 24, 2024",
+    description: "Join us for an exciting day of sports and athletics competitions.",
+  image: "/events/DSC_0125a.jpg"
   },
   // Add more events...
 ]
@@ -32,9 +40,123 @@ const activities = [
   // Add more activities...
 ]
 
+function CircularFeature({ label, index, total }: { label: string; index: number; total: number }) {
+  const angle = (index * (360 / total)) * (Math.PI / 180);
+  const radius = 220; // Maintain proper spacing
+
+  // Calculate label positions
+  let x = Math.cos(angle) * radius;
+  let y = Math.sin(angle) * radius;
+
+  // Adjustments for top and bottom alignment
+  let translateX = "-50%";
+  let translateY = "-50%";
+
+  if (angle === 0) translateY = "-100%"; // Top label
+  if (angle === Math.PI) translateY = "0%"; // Bottom label
+
+  return (
+    <div 
+      style={{
+        position: 'absolute',
+        left: `calc(50% + ${x}px)`,
+        top: `calc(50% + ${y}px)`,
+        transform: `translate(${translateX}, ${translateY})`, // Keeps text centered correctly
+      }}
+    >
+      {/* Label */}
+      <div 
+        className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/20 
+                   transition-all duration-300 cursor-pointer min-w-[180px] text-center"
+        style={{
+          whiteSpace: 'nowrap',
+          textAlign: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <p className="text-sm font-medium">{label}</p>
+      </div>
+    </div>
+  );
+}
+
+
+
 export default function AcademicsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
+      {/* Hero Banner */}
+      <div className="relative h-[35vh] flex items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/academics/hero-banner.jpg"
+            alt="Academics Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#004b87]/90 to-[#004b87]/80" />
+          <CircularDecoration />
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+        </div>
+        
+        <div className="relative w-full max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between">
+            {/* Text Content */}
+            <motion.div 
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="max-w-2xl"
+            >
+              <motion.h1 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl md:text-7xl font-bold mb-6 text-white"
+              >
+                Academics
+              </motion.h1>
+              <motion.p 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl md:text-2xl text-white/90"
+              >
+                Excellence in Education, Leadership in Learning
+              </motion.p>
+            </motion.div>
+
+            {/* Icons */}
+            <motion.div 
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="hidden md:grid grid-cols-2 gap-4"
+            >
+              {[
+                { icon: GraduationCap, delay: 0.2 },
+                { icon: BookOpen, delay: 0.3 },
+                { icon: Trophy, delay: 0.4 },
+                { icon: Calculator, delay: 0.5 },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: item.delay }}
+                  className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm hover:bg-white/20 transition-colors"
+                >
+                  <item.icon className="w-8 h-8 text-white" />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
       {/* Latest Events Section */}
       <section className="py-16 px-4">
         <motion.div 
@@ -72,6 +194,65 @@ export default function AcademicsPage() {
                   <p className="text-gray-300">{event.description}</p>
                 </div>
               </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Educational System Features */}
+      <section className="py-24 px-4 relative overflow-hidden">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          className="max-w-7xl mx-auto"
+        >
+          <div className="flex items-center gap-3 mb-16 justify-center">
+            <Circle className="w-8 h-8 text-blue-500" />
+            <h2 className="text-3xl font-bold text-center">Our Educational System</h2>
+          </div>
+
+          <div className="relative h-[500px] flex items-center justify-center">
+            {/* Outer circle */}
+            <div className="absolute w-[400px] h-[400px] rounded-full border-2 border-white/20" />
+            
+            {/* Central Circle */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              whileHover={{ scale: 1.05 }}
+              viewport={{ once: true }}
+              className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-[#004b87] to-blue-600 
+                         flex items-center justify-center cursor-pointer z-20 border-4 border-white/20"
+            >
+              <div className="text-center p-4">
+                <p className="font-bold text-sm leading-tight">
+                  THE AL-AZIZ
+                  <br />
+                  EDUCATION
+                  <br />
+                  SYSTEM
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Features */}
+            {[
+              "Islamic Course (Zad-e-Momin)",
+              "Standardized National Curriculum",
+              "Computer Basic Skills",
+              "Co-Curricular Activities",
+              "Character Development",
+              "Academic Activity Calendar",
+              "English Language Skills",
+              "Self Confidence",
+            ].map((label, index, array) => (
+              <CircularFeature
+                key={index}
+                label={label}
+                index={index}
+                total={array.length}
+              />
             ))}
           </div>
         </motion.div>
@@ -174,7 +355,7 @@ export default function AcademicsPage() {
                     className="relative h-40 rounded-lg overflow-hidden"
                   >
                     <Image
-                      src={`/facilities/lab${i}.jpg`}
+                      src={`/lab/lab${i}.jpg`}
                       alt={`Lab ${i}`}
                       fill
                       className="object-cover"
@@ -201,7 +382,7 @@ export default function AcademicsPage() {
                     className="relative h-40 rounded-lg overflow-hidden"
                   >
                     <Image
-                      src={`/facilities/library${i}.jpg`}
+                      src={`/lab/library${i}.jpg`}
                       alt={`Library ${i}`}
                       fill
                       className="object-cover"
