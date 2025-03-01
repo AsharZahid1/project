@@ -27,14 +27,21 @@ export default function Rector() {
     <div className="relative bg-white py-8 sm:py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative">
-          {/* Image positioned to overlap */}
+          {/* Image positioned to overlap - adjusted dimensions */}
           <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="absolute left-4 sm:left-12 -top-16 sm:-top-32 z-10"
+            className="absolute left-4 sm:left-12 -top-16 sm:-top-24 md:-top-28 lg:-top-32 z-10"
           >
-            <div className="h-[40vh] w-[30vh] sm:h-[80vh] sm:w-[60vh] overflow-hidden rounded-3xl sm:rounded-[5rem] border-4 sm:border-8 border-white shadow-xl">
+            <div
+              className="h-[35vh] w-[25vh] 
+                          sm:h-[45vh] sm:w-[35vh] 
+                          md:h-[55vh] md:w-[40vh] 
+                          lg:h-[75vh] lg:w-[55vh] 
+                          xl:h-[85vh] xl:w-[65vh] 
+                          overflow-hidden rounded-3xl sm:rounded-[3rem] border-4 sm:border-8 border-white shadow-xl"
+            >
               <Image
                 src="/zahidaziz.jpg"
                 alt="Prof. Abdul Aziz Haqqani"
@@ -45,9 +52,9 @@ export default function Rector() {
             </div>
           </motion.div>
 
-          {/* Main content div */}
+          {/* Main content div - adjusted padding */}
           <motion.div
-            className="bg-gray-900 rounded-3xl overflow-hidden pt-[45vh] sm:pt-0"
+            className="bg-gray-900 rounded-3xl overflow-hidden pt-[40vh] sm:pt-[35vh] md:pt-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -57,7 +64,7 @@ export default function Rector() {
               <div className="hidden sm:block relative" />
 
               {/* Content column */}
-              <div className="col-span-1 sm:col-span-2 p-6 sm:p-12">
+              <div className="col-span-1 sm:col-span-2 p-6 sm:p-8 md:p-12">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
