@@ -17,82 +17,77 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
-const components: { title: string; href: string; description: string }[] = [
+const components: { title: string; href: string; }[] = [
   {
     title: "Main Campus",
     href: "/campuses/main-campus",
-    description: "Our flagship campus with state-of-the-art facilities",
   },
   {
     title: "Suffah Campus",
     href: "/campuses/suffah-campus",
-    description: "Excellence in Islamic and modern education",
   },
   {
     title: "Iqbal Campus",
     href: "/campuses/iqbal-campus",
-    description: "Named after the great philosopher-poet",
   },
   {
     title: "Ghazali Senior Campus",
     href: "/campuses/ghazali-senior-campus",
-    description: "Advanced facilities for higher education",
   },
   {
     title: "Ghazali Junior Campus",
     href: "/campuses/ghazali-junior-campus",
-    description: "Nurturing young minds for the future",
   },
   {
     title: "Razi Campus",
     href: "/campuses/razi-campus",
-    description: "Focus on scientific excellence",
   },
   {
     title: "Jinnah Campus",
     href: "/campuses/jinnah-campus",
-    description: "Named after the founder of Pakistan",
   },
   {
     title: "Fatima Jinnah Campus",
     href: "/campuses/fatima-jinnah-campus",
-    description: "Dedicated to women's education",
   },
   {
     title: "Shahpur Campus",
     href: "/campuses/shahpur-campus",
-    description: "Serving the Shahpur community",
   },
   {
     title: "Rumi Campus",
     href: "/campuses/rumi-campus",
-    description: "Inspiring creativity and wisdom",
   },
   {
     title: "Sir Syed Campus",
     href: "/campuses/sir-syed-campus",
-    description: "Continuing the legacy of educational reform",
   },
 ]
 
 export default function Menu() {
   const pathname = usePathname()
-  const isCampusPage = pathname?.includes('/campuses/')
+  const isHomePage = pathname === '/'
 
-  const menuItemStyle = isCampusPage 
-    ? `${navigationMenuTriggerStyle()} !text-gray-900` 
-    : `${navigationMenuTriggerStyle()} text-white`
+  // Make styles more specific to override defaults
+  const textColor = isHomePage ? 'text-white' : '!text-gray-900'
+  
+  const menuItemStyle = `${navigationMenuTriggerStyle()} ${textColor} ${
+    isHomePage ? 'hover:text-white/80' : '!hover:text-gray-700'
+  }`
 
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "Academics", href: "/academics" },
     { name: "Admission", href: "/admission" },
+    // { name: "Preschool", href: "/admissions/preschool" },
+    // { name: "School", href: "/admissions/school" },
+    // { name: "College", href: "/admissions/college" },
     { name: "About Us", href: "/about" },
     { name: "Contacts", href: "/contacts" }
   ];
 
   return (
-    <NavigationMenu className={isCampusPage ? 'text-gray-900' : 'text-white'}>
+    <NavigationMenu className={textColor}>
       <NavigationMenuList>
         {menuItems.slice(0, 2).map((item, index) => (
           <motion.div
@@ -107,7 +102,9 @@ export default function Menu() {
           >
             <NavigationMenuItem>
               <Link href={item.href} legacyBehavior passHref>
-                <NavigationMenuLink className={menuItemStyle}>
+                <NavigationMenuLink 
+                  className={`${menuItemStyle} !font-medium`}
+                >
                   {item.name}
                 </NavigationMenuLink>
               </Link>
@@ -115,18 +112,12 @@ export default function Menu() {
           </motion.div>
         ))}
 
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.2,
-            ease: "easeOut"
-          }}
-        >
+        <motion.div>
           <NavigationMenuItem>
             <NavigationMenuTrigger 
-              className={isCampusPage ? '!text-gray-900' : 'text-white'}
+              className={`${textColor} !font-medium ${
+                isHomePage ? 'hover:text-white/80' : '!hover:text-gray-700'
+              }`}
             >
               Campuses
             </NavigationMenuTrigger>
@@ -137,9 +128,7 @@ export default function Menu() {
                     key={component.title}
                     title={component.title}
                     href={component.href}
-                  >
-                    {component.description}
-                  </ListItem>
+                  />
                 ))}
               </ul>
             </NavigationMenuContent>
@@ -159,7 +148,9 @@ export default function Menu() {
           >
             <NavigationMenuItem>
               <Link href={item.href} legacyBehavior passHref>
-                <NavigationMenuLink className={menuItemStyle}>
+                <NavigationMenuLink 
+                  className={`${menuItemStyle} !font-medium`}
+                >
                   {item.name}
                 </NavigationMenuLink>
               </Link>
@@ -174,22 +165,19 @@ export default function Menu() {
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+>(({ className, title, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
         </a>
       </NavigationMenuLink>
     </li>

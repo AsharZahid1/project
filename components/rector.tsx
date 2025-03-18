@@ -54,7 +54,7 @@ export default function Rector() {
 
           {/* Main content div - adjusted padding */}
           <motion.div
-            className="bg-gray-900 rounded-3xl overflow-hidden pt-[40vh] sm:pt-[35vh] md:pt-0"
+            className="bg-gray-900 rounded-3xl overflow-hidden pt-[40vh] sm:pt-[35vh] md:pt-0 relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -63,8 +63,8 @@ export default function Rector() {
               {/* Empty column for image spacing */}
               <div className="hidden sm:block relative" />
 
-              {/* Content column */}
-              <div className="col-span-1 sm:col-span-2 p-6 sm:p-8 md:p-12">
+              {/* Content column with adjusted margin */}
+              <div className="col-span-1 sm:col-span-2 p-6 sm:p-8 md:p-12 md:ml-[25%]">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

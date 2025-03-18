@@ -155,7 +155,7 @@ export default function AboutPage() {
                 </div>
                 <div className="text-center p-8 bg-white/5 rounded-lg backdrop-blur-sm">
                   <h3 className="text-4xl font-bold text-yellow-500">
-                    <AnimatedCounter end={1000} />+
+                    <AnimatedCounter end={3000} />+
                   </h3>
                   <p>Students</p>
                 </div>

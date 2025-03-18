@@ -12,6 +12,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { DialogTitle } from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
 
 const campuses = [
@@ -34,7 +35,11 @@ export default function SidebarMenu() {
       <SheetTrigger>
         <RxHamburgerMenu className="h-8 w-10 text-gray-300 bg-gray-950 py-1 rounded-md md:hidden" />
       </SheetTrigger>
+
       <SheetContent side="right" className="w-64 sm:w-80">
+        {/* Add a DialogTitle for accessibility */}
+        <DialogTitle className="sr-only">Menu</DialogTitle>
+
         <div className="flex flex-col gap-y-4">
           {/* Home */}
           <Link href="/" className="text-lg font-medium py-2 hover:text-blue-500">

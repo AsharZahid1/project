@@ -69,9 +69,9 @@ const AnimatedCounter = ({ target, label }: { target: number, label: string }) =
 
 const CountBox = () => {
   const stats = [
-    { value: 35000, label: "Students" },
-    { value: 2000, label: "Faculty Members" },
-    { value: 100, label: "Programs" },
+    { value: 3500, label: "Students" },
+    { value: 250, label: "Faculty Members" },
+    { value: 10, label: "Programs" },
     { value: 11, label: "Campuses" }
   ];
 
